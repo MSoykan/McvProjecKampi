@@ -9,6 +9,7 @@ namespace EntityLayer.Concrete {
     public class Heading {
         [Key]
         public int HeadingID { get; set; }
+
         [StringLength(50)]
         public string HeadingName { get; set; }
         public DateTime HeadingDate { get; set; }
