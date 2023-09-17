@@ -2,11 +2,14 @@
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace McvProjecKampi.Controllers {
     public class CategoryController : Controller {
@@ -16,20 +19,30 @@ namespace McvProjecKampi.Controllers {
             return View();
         }
 
-        public ActionResult GetCategoryList()   {
+        public ActionResult GetCategoryList() {
             var categoryValues = cm.GetList();
             return View(categoryValues);
         }
         [HttpGet]
-        public ActionResult AddCategory () {
-            return View();      
+        public ActionResult AddCategory() {
+            return View();
         }
 
         [HttpPost]
         public ActionResult AddCategory(Category p) {
             CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid) {
+                cm.CategoryAddBL(p);
+                return RedirectToAction("GetCategoryList");
+            }
+            else {
+                foreach (var item in results.Errors) {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             //cm.(p);
-            return RedirectToAction("GetCategoryList");
+            return View() ;
         }
     }
 }
