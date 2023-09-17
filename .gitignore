@@ -16,6 +16,11 @@
 # Mono auto generated files
 mono_crash.*
 
+# Ignore
+
+/McvProjecKampi/AdminLTE-3.0.4/
+
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -396,3 +401,45 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Admin LTE .gitignore file
+
+// System / Log files 
+*.DS_Store
+*.log
+
+// Archives
+*.zip
+
+// Sass Cache
+.sass-cache
+
+// Project files
+.idea
+nbproject
+nbproject/private
+.vscode/
+.vs/
+
+// Node / Bower
+node_modules/
+bower_components/
+
+// Plugins
+/plugins/*/*.md
+/plugins/*/*.html
+/plugins/*/package.json
+
+
+// Docs
+Gemfile.lock
+docs/_site
+docs_html/
+.jekyll-cache/
+.jekyll-metadata
+
+// ETC
+TODO
+test.html
+ad.js
+
