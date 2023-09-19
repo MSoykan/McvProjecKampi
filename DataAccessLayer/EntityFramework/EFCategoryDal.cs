@@ -9,5 +9,6 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework {
     public class EFCategoryDal: GenericRepository<Category>, ICategoryDAL {
+
     }
 }
